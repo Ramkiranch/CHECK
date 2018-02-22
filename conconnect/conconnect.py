@@ -328,6 +328,10 @@ class ConsensusConnect():
     def callACT(self):
         m = 'CALL act_scores();'
         return self.connect(m,db_name='Consensus_Reporting',df_flag=False)
+    
+    def releaseDate(self, relnum):
+        m = "SELECT HFS_Release_Date FROM release_info where ReleaseNum = {}".format(relnum)
+        return self.connect(m, db_name='CHECK_CPAR2')
 
     def connect(self,sql_str,db_name,df_flag=True):
         '''sql_str: query text to be sent to db
